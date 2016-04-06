@@ -27,6 +27,7 @@ exports.parse = function(opts) {
 
           if (parts[1] != undefined) {
             var obJson = {
+              LOC_NU: parts[0],
               LOC_CEP_INI: parts[1],
               LOC_CEP_FIM: parts[2]
 
@@ -54,6 +55,8 @@ exports.parse = function(opts) {
 
           if (parts[1] != undefined) {
             for (var i = 0; i < arrayZipBand.length; i++) {
+              
+            }
               var obJson = {
                 LOC_NU: parts[0],
                 UFE_SG: parts[1],
@@ -64,7 +67,7 @@ exports.parse = function(opts) {
               }
               arrayParsedZipcodeBr.add(obJson);
 
-            }
+            
           }
 
 
