@@ -1,6 +1,9 @@
+"use strict"
+
 var fs = require('fs');
 var arrayZipBand = [];
-var arrayParsedZipcodeBr= [];
+var jsonZipCode = [];
+var arrayParsedZipcodeBr = [];
 exports.parse = function(opts) {
 
   if (opts.zipBand.constructor != Array) {
@@ -12,21 +15,22 @@ exports.parse = function(opts) {
 
   if (opts.config === 0) {
     opts.zipBand.forEach(function(file) {
-    fs.readFile(file, 'utf8', function(err, logData, callback) {
+      fs.readFile(file, 'utf8', function(err, logData, callback) {
 
 
         if (err) throw err;
 
-        var text = logData.toString();
+        let text = logData.toString();
         decodeURIComponent(text);
 
-        var lines = text.split('\n');
+        let lines = text.split('\n');
 
         lines.forEach(function(line) {
-          var parts = line.split('@');
+          let parts = line.split('@');
 
           if (parts[1] != undefined) {
-            var obJson = {
+            let obJson = {
+              LOC_NU: parts[0],
               LOC_CEP_INI: parts[1],
               LOC_CEP_FIM: parts[2]
 
@@ -37,43 +41,56 @@ exports.parse = function(opts) {
         });
 
 
-       });
+      });
     });
-      opts.location.forEach(function(file) {
+    opts.location.forEach(function(file) {
       fs.readFile(file, 'utf8', function(err, logData, callback) {
 
 
         if (err) throw err;
 
-        var text = logData.toString();
+        let text = logData.toString();
         decodeURIComponent(text);
 
-        var lines = text.split('\n');
+        let lines = text.split('\n');
 
         lines.forEach(function(line) {
-          var parts = line.split('@');
+          let parts = line.split('@');
 
           if (parts[1] != undefined) {
-            for (var i = 0; i < arrayZipBand.length; i++) {
-              var obJson = {
-                LOC_NU: parts[0],
-                UFE_SG: parts[1],
-                LOC_NO: parts[2],
-                MUN_NU: parts[8],
-                LOC_CEP_INI: arrayZipBand[i].LOC_CEP_INI,
-                LOC_CEP_FIM: arrayZipBand[i].LOC_CEP_FIM
+            for (let i = 0; i < arrayZipBand.length; i++) {
+              if (parts[0] == arrayZipBand[i].LOC_NU) {
+               jsonZipCode.push(arrayZipBand[i]);
               }
-              arrayParsedZipcodeBr.push(obJson);
-
             }
+            if (jsonZipCode === undefined) {
+              throw "Was not possible to find Zipcode for the id " + parts[0];
+            }
+            
+            for (let i = 0; i < jsonZipCode.length; i++) {
+            let obJson = {
+              LOC_NU: parts[0],
+              UFE_SG: parts[1],
+              LOC_NO: parts[2],
+              MUN_NU: parts[8],
+              LOC_CEP_INI: jsonZipCode[i].LOC_CEP_INI,
+              LOC_CEP_FIM: jsonZipCode[i].LOC_CEP_FIM
+            }
+            
+            arrayParsedZipcodeBr.push(obJson);
+           }
+           jsonZipCode = [];
+
           }
 
 
         });
       });
     });
+
     
-    return arrayParsedZipcodeBr;
 
   };
+return arrayParsedZipcodeBr;
+  
 }
