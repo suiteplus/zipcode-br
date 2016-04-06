@@ -23,7 +23,9 @@
     "url": "https://github.com/suiteplus/zipcode-br/issues"
   },
   "homepage": "https://github.com/suiteplus/zipcode-br#readme",
-  "dependencies": {},
+  "dependencies": {
+    "q": "^1.4.1"
+  },
   "devDependencies": {
     "coveralls": "^2.11.9",
     "eslint-plugin-mocha": "^2.0.0",

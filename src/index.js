@@ -1,5 +1,6 @@
 "use strict"
 
+var Q = require('q');
 var fs = require('fs');
 var arrayZipBand = [];
 var jsonZipCode = [];
@@ -15,11 +16,16 @@ exports.parse = function(opts) {
 
   if (opts.config === 0) {
     opts.zipBand.forEach(function(file) {
-      fs.readFile(file, 'utf8', function(err, logData, callback) {
+      
+      fs.readFile(file, 'utf8', function(err, logData) {
 
 
-        if (err) throw err;
-
+        if (err) {
+          deferred.reject(new Error("not possible to parse zipBand"));
+          
+          
+        } else{
+        
         let text = logData.toString();
         decodeURIComponent(text);
 
@@ -40,11 +46,13 @@ exports.parse = function(opts) {
 
         });
 
-
+        }
       });
+      
     });
+    
     opts.location.forEach(function(file) {
-      fs.readFile(file, 'utf8', function(err, logData, callback) {
+      fs.readFile(file, 'utf8', function(err, logData) {
 
 
         if (err) throw err;
