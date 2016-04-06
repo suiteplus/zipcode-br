@@ -1,6 +1,6 @@
 var fs = require('fs');
 var arrayZipBand = [];
-var arrayParsedZipcodeBr;
+var arrayParsedZipcodeBr= [];
 exports.parse = function(opts) {
 
   if (opts.zipBand.constructor != Array) {
@@ -10,9 +10,9 @@ exports.parse = function(opts) {
     opts.location = [opts.location];
   }
 
-  if (opts.config === "0") {
-    for (var i = 0; i < opts.zipBand.length; i++) {
-      fs.readFile(opts.zipBand[i], 'utf8', function(err, logData) {
+  if (opts.config === 0) {
+    opts.zipBand.forEach(function(file) {
+    fs.readFile(file, 'utf8', function(err, logData, callback) {
 
 
         if (err) throw err;
@@ -27,20 +27,20 @@ exports.parse = function(opts) {
 
           if (parts[1] != undefined) {
             var obJson = {
-              LOC_NU: parts[0],
               LOC_CEP_INI: parts[1],
               LOC_CEP_FIM: parts[2]
 
             }
-            arrayZipBand.add(obJson);
+            arrayZipBand.push(obJson);
           }
 
         });
 
 
-      });
-
-      fs.readFile(opts.location, 'utf8', function(err, logData) {
+       });
+    });
+      opts.location.forEach(function(file) {
+      fs.readFile(file, 'utf8', function(err, logData, callback) {
 
 
         if (err) throw err;
@@ -55,8 +55,6 @@ exports.parse = function(opts) {
 
           if (parts[1] != undefined) {
             for (var i = 0; i < arrayZipBand.length; i++) {
-              
-            }
               var obJson = {
                 LOC_NU: parts[0],
                 UFE_SG: parts[1],
@@ -65,16 +63,16 @@ exports.parse = function(opts) {
                 LOC_CEP_INI: arrayZipBand[i].LOC_CEP_INI,
                 LOC_CEP_FIM: arrayZipBand[i].LOC_CEP_FIM
               }
-              arrayParsedZipcodeBr.add(obJson);
+              arrayParsedZipcodeBr.push(obJson);
 
-            
+            }
           }
 
 
         });
       });
-
-    }
+    });
+    
     return arrayParsedZipcodeBr;
 
   };
