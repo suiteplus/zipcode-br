@@ -1,56 +1,40 @@
 {
-  "name": "nsconfig",
-  "version": "0.5.0",
-  "description": "Netsuite Auth Configuration",
-  "main": "dist/nsconfig.js",
+  "name": "zipcode-br",
+  "version": "0.1.0",
+  "description": "Zipcode BR",
+  "main": "src/index.js",
   "scripts": {
     "test": "gulp test",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/suiteplus/nsconfig.git"
+    "url": "git+https://github.com/suiteplus/zipcode-br.git"
   },
   "keywords": [
-    "netsuite",
-    "suiteplus",
-    "suite",
-    "s+"
+    "zipcode",
+    "br",
+    "cep",
+    "correios"
   ],
   "author": "daniel.joppi@suiteplus.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/suiteplus/nsconfig/issues"
+    "url": "https://github.com/suiteplus/zipcode-br/issues"
   },
-  "homepage": "https://github.com/suiteplus/nsconfig#readme",
-  "dependencies": {
-    "express": "^4.13.4",
-    "gulp": "^3.9.1",
-    "gulp-jshint": "^2.0.0",
-    "lodash.assign": "^4.0.1",
-    "osenv": "^0.1.3"
-  },
+  "homepage": "https://github.com/suiteplus/zipcode-br#readme",
+  "dependencies": {},
   "devDependencies": {
-    "babel": "^6.5.2",
-    "babel-core": "^6.7.4",
-    "babel-loader": "^6.2.4",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-runtime": "^6.3.19",
-    "coveralls": "^2.11.6",
-    "cp": "^0.2.0",
+    "coveralls": "^2.11.9",
+    "eslint-plugin-mocha": "^2.0.0",
     "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.1",
-    "gulp-istanbul": "^0.10.3",
-    "gulp-jshint": "^2.0.0",
+    "gulp-eslint": "^2.0.0",
+    "gulp-istanbul": "^0.10.4",
     "gulp-load-plugins": "^1.2.0",
     "gulp-mocha": "^2.2.0",
-    "gulp-plumber": "^1.0.1",
-    "gulp-uglify": "^1.5.1",
-    "jshint": "^2.9.1",
-    "jshint-stylish": "^2.1.0",
+    "gulp-plumber": "^1.1.0",
     "q": "^1.4.1",
     "require-dir": "^0.3.0",
-    "rimraf": "^2.4.3",
-    "should": "^8.2.1"
+    "should": "^8.3.0"
   }
 }

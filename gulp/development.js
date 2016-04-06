@@ -11,21 +11,20 @@ var gulp = require('gulp'),
         jsTests: [`${appRoot}/test/**/*-test.js`]
     };
 
-var defaultTasks = ['env:development', 'dev:jshint', 'dev:mocha', 'dev:watch'];
+var defaultTasks = ['env:development', 'dev:eslint', 'dev:mocha', 'dev:watch'];
 
 gulp.task('env:development', () => {
     process.env.NODE_ENV = 'development';
 });
 
-gulp.task('dev:jshint', ['dev:babel'] , () => {
+gulp.task('dev:eslint' , () => {
     return gulp.src(paths.js.concat(paths.jsTests))
         .pipe(plugins.plumber())
-        .pipe(plugins.jshint())
-        .pipe(plugins.jshint.reporter('jshint-stylish'))
-        .pipe(plugins.jshint.reporter('fail'));
+        .pipe(plugins.eslint())
+        .pipe(plugins.eslint.format());
 });
 
-gulp.task('dev:mocha', ['dev:jshint'], function () {
+gulp.task('dev:mocha', ['dev:eslint'], function () {
     gulp.src(paths.jsTests)
         .pipe(plugins.plumber())
         .pipe(plugins.mocha());
@@ -35,7 +34,6 @@ gulp.task('dev:watch', () => {
     gulp.watch(paths.js.concat(paths.jsTests), ['development', 'dev:mocha']);
 });
 
-gulp.task('dev:babel', ['test:babel'] );
 
 gulp.task('development', defaultTasks);
 
