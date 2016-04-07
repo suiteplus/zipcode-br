@@ -24,7 +24,6 @@ gulp.task('test:eslint', () => {
 });
 
 gulp.task('test:coverage', ['test:eslint'], () => {
-    let deferred = require('q').defer();
     
     let executeTests = () => {
         gulp.src(paths.jsTests)
@@ -45,5 +44,5 @@ gulp.task('test:coverage', ['test:eslint'], () => {
         })) // Covering files
         .pipe(plugins.istanbul.hookRequire())// Force `require` to return covered files
         .on('finish', () => executeTests());
-    return deferred.promise;
+    
 });
