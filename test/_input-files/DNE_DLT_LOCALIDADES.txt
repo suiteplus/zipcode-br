@@ -1,0 +1,4 @@
+C D1202  02 OUT 2012    ? COPYRIGHT CORREIOS                 LOCALIDADES                                                                                                  
+DBRPR      00000233Nova Santa Helena                                                       87564000Nova Sta Helena                     DN      00006175PR        U87564000
+DBRCE      00000188Nova Santa Cruz                                                         63218000Nova Sta Cruz                       DN      00001500CE        U63218000
+#
