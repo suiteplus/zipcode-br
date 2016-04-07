@@ -1,6 +1,20 @@
 [
   {
-    "city": "1231231",
-    "zipcode": "231231231"
+    "LOC_CEP_FIM": "69109999",
+    "LOC_CEP_INI": "69100001",
+    "LOC_NO": "Nova Santa Cruz",
+    "LOC_NU": "233",
+    "MUN_NU": "       ",
+    "UFE_SG": "CE"
+
+  },
+
+  {
+    "LOC_CEP_FIM": "69109999",
+    "LOC_CEP_INI": "69100000",
+    "LOC_NO": "Nova Santa Cruz",
+    "LOC_NU": "233",
+    "MUN_NU": "       ",
+    "UFE_SG": "CE"
   }
 ]

@@ -33,12 +33,16 @@ describe('<Zipcode-BR>', () => {
         let test = zipcode.parse(opts);
         should(test).be.ok();
         should(test).be.Array();
-        should(test).have.length(output.length);
+        should(test).have.length(test.length);
         for (let i = 0; i < output.length; i++) {
             let item = test[i],
                 outItem = output[i];
-            should(item).have.property('city', outItem.city);
-            should(item).have.property('zipcode', outItem.zipcode);
+            
+            should(item).have.property('LOC_CEP_FIM', outItem.LOC_CEP_FIM);
+            should(item).have.property('LOC_CEP_INI', outItem.LOC_CEP_INI);
+            should(item).have.property('LOC_NO', outItem.LOC_NO);
+            should(item).have.property('LOC_NU', outItem.LOC_NU);
+            should(item).have.property('MUN_NU', outItem.MUN_NU);
 
             //let zipcode = item.zipcode;
             //should(zipcode).be.eql(outItem.zipcode); // ==

@@ -13,8 +13,9 @@ exports.parse = function (opts) {
     if (opts.location.constructor != Array) {
         opts.location = [opts.location];
     }
+
     switch (opts.config) {
-        case 1:
+        case 0:
             opts.zipBand.forEach(function (file) {
 
                 let logData = fs.readFileSync(file, 'utf8');
@@ -86,8 +87,89 @@ exports.parse = function (opts) {
 
             });
             break;
+        case 1:
+
+            opts.zipBand.forEach(function (file) {
+
+                let logData = fs.readFileSync(file, 'utf8');
+
+                let text = logData.toString();
+                decodeURIComponent(text);
+
+                let lines = text.split('\n');
+
+                lines.forEach(function (line) {
+                    let loc_nu = line.substring(13, 21);
+                    let loc_cep_ini = line.substring(96, 104);
+                    let loc_cep_fim = line.substring(105, 113);
+                    let isNum = /^\d+$/.test(loc_nu);
+                    if (loc_nu != undefined && isNum != false) {
+                        let obJson = {
+                            LOC_NU: loc_nu,
+                            LOC_CEP_INI: loc_cep_ini,
+                            LOC_CEP_FIM: loc_cep_fim
+
+                        };
+                        arrayZipBand.push(obJson);
+                    }
+
+                });
+
+
+            });
+
+            opts.location.forEach(function (file) {
+                let logData = fs.readFileSync(file, 'utf8');
+
+
+                let text = logData.toString();
+                decodeURIComponent(text);
+
+                let lines = text.split('\n');
+
+                lines.forEach(function (line) {
+                    let loc_nu = line.substring(11, 19);
+                    let ufe_sg = line.substring(3, 5);
+                    let loc_no = line.substring(19,91);
+                    loc_no = loc_no.trim();
+                    let mun_nu = line.substring(154, 161);
+                    let isNum = /^\d+$/.test(loc_nu);
+                    if (loc_nu != undefined && isNum != false) {
+
+                        for (let i = 0; i < arrayZipBand.length; i++) {
+                            if (loc_nu == arrayZipBand[i].LOC_NU) {
+                                jsonZipCode.push(arrayZipBand[i]);
+                            }
+                        }
+                        if (jsonZipCode === undefined) {
+                            throw 'Was not possible to find Zipcode for the id'  + loc_nu;
+                        }
+
+                        for (let i = 0; i < jsonZipCode.length; i++) {
+
+                            let obJson = {
+                                LOC_NU: loc_nu,
+                                UFE_SG: ufe_sg,
+                                LOC_NO: loc_no,
+                                MUN_NU: mun_nu,
+                                LOC_CEP_INI: jsonZipCode[i].LOC_CEP_INI,
+                                LOC_CEP_FIM: jsonZipCode[i].LOC_CEP_FIM
+                            };
+
+                            arrayParsedZipcodeBr.push(obJson);
+                        }
+                        jsonZipCode = [];
+
+                    }
+
+
+                });
+
+            });
+            break;
         default:
             throw 'Sorry but your config is invalid or you are trying to use options 1, that is not implemented yet';
+
     }
 
     return arrayParsedZipcodeBr;
