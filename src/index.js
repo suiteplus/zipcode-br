@@ -62,7 +62,7 @@ exports.parse = function (opts) {
                                 jsonZipCode.push(arrayZipBand[i]);
                             }
                         }
-                        if (jsonZipCode === undefined) {
+                        if (jsonZipCode.length == 0) {
                             throw 'Was not possible to find Zipcode for the id'  + parts[0];
                         }
 
@@ -141,7 +141,7 @@ exports.parse = function (opts) {
                                 jsonZipCode.push(arrayZipBand[i]);
                             }
                         }
-                        if (jsonZipCode === undefined) {
+                        if (jsonZipCode.length == 0) {
                             throw 'Was not possible to find Zipcode for the id'  + loc_nu;
                         }
 
@@ -168,7 +168,7 @@ exports.parse = function (opts) {
             });
             break;
         default:
-            throw 'Sorry but your config is invalid or you are trying to use options 1, that is not implemented yet';
+            throw 'Sorry but your config is invalid';
 
     }
 
