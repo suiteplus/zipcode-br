@@ -1,48 +1,41 @@
-#
-zipcode - br[![Build Status][travis - image]][travis - url][![Coveralls Status][coveralls - image]][coveralls - url]
+# zipcode - br [![Build Status][travis - image]][travis - url][![Coveralls Status][coveralls - image]][coveralls - url]
+
+
 
 
 ## Required
     * node.js 4 +
 
-    ##Install[![Dependency Status][david - image]][david - url][![devDependency Status][david - image - dev]][david - url - dev]
+    ## Install [![Dependency Status][david - image]][david - url][![devDependency Status][david - image - dev]][david - url - dev]
 ``
 `bash
     npm install suiteplus/zipcode-br --save
 `
 ``
+## Functionality
 
-
-Create a json array of zipcodes from brazil using DNE files,
+Create a json array of zipcodes from brazil using DNE (diretório nacional de endereços) files,
 for that you need the files DELTA_LOG_FAIXA_LOC.txt and DELTA_LOG_LOCALIDADE.txt from DNE.
 
-how to use:
+## Usage
 
-    Create a json object with zipBand, location and config.
+Create a json object with zipBand, location and config.
 
-zipBand: It 's the path to the file DELTA_LOG_FAIXA_LOC.txt it can be a array of paths or only a string to the path.
-location: The same as zipBand but
-for the file DELTA_LOG_LOCALIDADE.txt
-config: set it to 0
-if you want search files with separators or 1
-if you want without it.
-
-Example:
-
-    var opts = {
+  var opts = {
         zipBand: './files/DELTA_LOG_FAIXA_LOC.txt',
         location: './files/DELTA_LOG_LOCALIDADE.txt',
         config: 0
     }
+    
+zipBand: It 's the path to the file DELTA_LOG_FAIXA_LOC.txt it can be a array of paths or only a string to the path.
+location: The same as zipBand but for the file DELTA_LOG_LOCALIDADE.txt
+config: set it to 0
+if you want search files with separators or 1 if you want without it.
 
-Call the
-function.parse() passing the json to parse the files.
+Call the function.parse() passing the json to parse the files.
 example:
 
     zipcode.parse(opts);
-
-
-
 
 
 
