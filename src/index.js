@@ -110,8 +110,8 @@ exports.parse = function (opts) {
 
                 lines.forEach(function (line) {
                     let loc_nu = line.substring(13, 21);
-                    let loc_cep_ini = line.substring(96, 104);
-                    let loc_cep_fim = line.substring(105, 113);
+                    let loc_cep_ini = line.substring(95, 103);
+                    let loc_cep_fim = line.substring(104, 112);
                     let isNum = /^\d+$/.test(loc_nu);
                     if (loc_nu != undefined && isNum != false) {
                         let obJson = {
