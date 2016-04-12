@@ -46,7 +46,6 @@
     "fs": "0.0.2"
   },
   "description": "Zipcode BR",
-=======
   "name": "zipcode-br",
   "version": "0.1.0",
   "description": "Zipcode BR",
@@ -74,7 +73,6 @@
   "dependencies": {
     "fs": "0.0.2"
   },
->>>>>>> 5e7216a797f2f0b5c4d5e83d3dc9200c3a4794ca
   "devDependencies": {
     "coveralls": "^2.11.9",
     "eslint": "^2.7.0",
@@ -87,7 +85,6 @@
     "gulp-plumber": "^1.1.0",
     "require-dir": "^0.3.0",
     "should": "^8.3.0"
-<<<<<<< HEAD
   },
   "gitHead": "2a1942e54cfe9771d3f34e2a679a3a3fad8a13b3",
   "homepage": "https://github.com/suiteplus/zipcode-br#readme",
@@ -112,6 +109,5 @@
     "test": "gulp test"
   },
   "version": "0.1.0"
-=======
   }
-}
+
