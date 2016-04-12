@@ -59,6 +59,7 @@ exports.parse = function (opts) {
 
                         for (let i = 0; i < arrayZipBand.length; i++) {
                             if (parts[0] == arrayZipBand[i].LOC_NU) {
+<<<<<<< HEAD
                                 let aux = arrayZipBand[i];
                                 jsonZipCode.push(aux);
                             }
@@ -76,6 +77,15 @@ exports.parse = function (opts) {
 
 
 
+=======
+                                jsonZipCode.push(arrayZipBand[i]);
+                            }
+                        }
+                        if (jsonZipCode.length == 0) {
+                            throw 'Was not possible to find Zipcode for the id'  + parts[0];
+                        }
+
+>>>>>>> 5e7216a797f2f0b5c4d5e83d3dc9200c3a4794ca
                         for (let i = 0; i < jsonZipCode.length; i++) {
                             let obJson = {
                                 LOC_NU: parts[0],
@@ -144,11 +154,15 @@ exports.parse = function (opts) {
                     loc_no = loc_no.trim();
                     let mun_nu = line.substring(154, 161);
                     let isNum = /^\d+$/.test(loc_nu);
+<<<<<<< HEAD
                     let uniqueZipcode = line.substring(91, 99);
+=======
+>>>>>>> 5e7216a797f2f0b5c4d5e83d3dc9200c3a4794ca
                     if (loc_nu != undefined && isNum != false) {
 
                         for (let i = 0; i < arrayZipBand.length; i++) {
                             if (loc_nu == arrayZipBand[i].LOC_NU) {
+<<<<<<< HEAD
                                 let aux = arrayZipBand[i];
                                 jsonZipCode.push(aux);
                             }
@@ -162,6 +176,13 @@ exports.parse = function (opts) {
 
                             };
                             jsonZipCode.push(obJson);
+=======
+                                jsonZipCode.push(arrayZipBand[i]);
+                            }
+                        }
+                        if (jsonZipCode.length == 0) {
+                            throw 'Was not possible to find Zipcode for the id'  + loc_nu;
+>>>>>>> 5e7216a797f2f0b5c4d5e83d3dc9200c3a4794ca
                         }
 
                         for (let i = 0; i < jsonZipCode.length; i++) {
