@@ -1,0 +1,85 @@
+{
+  "_args": [
+    [
+      "suiteplus/zipcode-br",
+      "/Users/michelmachado/Documents/WebStormProjects/br16-publisher"
+    ]
+  ],
+  "_from": "suiteplus/zipcode-br",
+  "_id": "zipcode-br@0.1.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/zipcode-br",
+  "_phantomChildren": {},
+  "_requested": {
+    "hosted": {
+      "directUrl": "https://raw.githubusercontent.com/suiteplus/zipcode-br/master/package.json",
+      "gitUrl": "git://github.com/suiteplus/zipcode-br.git",
+      "httpsUrl": "git+https://github.com/suiteplus/zipcode-br.git",
+      "shortcut": "github:suiteplus/zipcode-br",
+      "ssh": "git@github.com:suiteplus/zipcode-br.git",
+      "sshUrl": "git+ssh://git@github.com/suiteplus/zipcode-br.git",
+      "type": "github"
+    },
+    "name": null,
+    "raw": "suiteplus/zipcode-br",
+    "rawSpec": "suiteplus/zipcode-br",
+    "scope": null,
+    "spec": "github:suiteplus/zipcode-br",
+    "type": "hosted"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "git://github.com/suiteplus/zipcode-br.git#2a1942e54cfe9771d3f34e2a679a3a3fad8a13b3",
+  "_shasum": "fab5e132492f732d0fad64d69df3b644158d1bd3",
+  "_shrinkwrap": null,
+  "_spec": "suiteplus/zipcode-br",
+  "_where": "/Users/michelmachado/Documents/WebStormProjects/br16-publisher",
+  "author": {
+    "name": "daniel.joppi@suiteplus.com"
+  },
+  "bugs": {
+    "url": "https://github.com/suiteplus/zipcode-br/issues"
+  },
+  "dependencies": {
+    "fs": "0.0.2"
+  },
+  "description": "Zipcode BR",
+  "devDependencies": {
+    "coveralls": "^2.11.9",
+    "eslint": "^2.7.0",
+    "eslint-plugin-mocha": "^2.0.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^2.0.0",
+    "gulp-istanbul": "^0.10.4",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "require-dir": "^0.3.0",
+    "should": "^8.3.0"
+  },
+  "gitHead": "2a1942e54cfe9771d3f34e2a679a3a3fad8a13b3",
+  "homepage": "https://github.com/suiteplus/zipcode-br#readme",
+  "keywords": [
+    "zipcode",
+    "br",
+    "cep",
+    "correios"
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "name": "zipcode-br",
+  "optionalDependencies": {},
+  "readme": "# zipcode-br \n[![Build Status][travis-image]][travis-url] [![Coveralls Status][coveralls-image]][coveralls-url]\n\n## Required\n * node.js 4 +\n\n## Install [![Dependency Status][david-image]][david-url][![devDependency Status][david-image-dev]][david-url-dev]\n```bash\n    npm install suiteplus/zipcode-br --save\n```\n\n## Functionality\n\nCreate a json array of zipcodes from brazil using DNE (diretório nacional de endereços) files.\n\n## Usage\n\nCreate a json object with zipBand, location and config.\n\n```javascript\n var opts = {\n        zipBand: './files/DELTA_LOG_FAIXA_LOC.txt',\n        location: './files/DELTA_LOG_LOCALIDADE.txt',\n        config: 0\n    }\n```\n  \n|     Param     \t| Type   \t| Description                                                                                                                                                                                |\n|:-------------:\t|--------\t|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\t                                                                             |\n| opts.config   \t| string \t| Set it to 0 if you want search files with separators(@) or 1 if you want the fixed.                                                                                                        |\n| opts.zipBand  \t| string \t| It's the path to zipcode band if you set opts.config to 0 will be DELTA_LOG_FAIXA_LOC.TXT if 1 DNE_DLT_FAIXAS_CEP_LOCALIDADE.TXT. It can be a array of paths or only a string to the path. |\n| opts.location \t| string \t| The same as zipBand but for the file DELTA_LOG_LOCALIDADE.txt if opts.config = 0 and DNE_DLT_LOCALIDADES.TXT if opts.config = 1. Can be a array to                                         |\n\n\nCall the function.parse() passing the json to parse the files.\nexample:\n\n```javascript\n    zipcode.parse(opts);\n```\n\n[travis-url]: https://travis-ci.org/suiteplus/zipcode-br\n[travis-image]: https://img.shields.io/travis/suiteplus/zipcode-br.svg\n\n[coveralls-url]: https://coveralls.io/r/suiteplus/zipcode-br\n[coveralls-image]: http://img.shields.io/coveralls/suiteplus/zipcode-br/master.svg\n\n[david-url]: https://david-dm.org/suiteplus/zipcode-br\n[david-image]: https://david-dm.org/suiteplus/zipcode-br.svg\n\n[david-url-dev]: https://david-dm.org/suiteplus/zipcode-br#info=devDependencies\n[david-image-dev]: https://david-dm.org/suiteplus/zipcode-br/dev-status.svg",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suiteplus/zipcode-br.git"
+  },
+  "scripts": {
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "test": "gulp test"
+  },
+  "version": "0.1.0"
+}

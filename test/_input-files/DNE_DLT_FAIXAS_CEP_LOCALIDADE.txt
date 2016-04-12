@@ -1,0 +1,5 @@
+C D1202  02 OUT 2012    ? COPYRIGHT CORREIOS                 FAIXAS DE CEP POR LOCALIDADE                         
+DAM  04      00000233Itacoatiara                                                             01 69100001 69109999I
+DAM  04      00000233Itacoatiara                                                             01 69100000 69109999D
+DAM  04      00000188Itacoatiara                                                             01 52100000 52109999D
+#
