@@ -65,7 +65,7 @@ exports.parse = function (opts) {
                         }
                         if (jsonZipCode.length == 0) {
                             let obJson = {
-                                LOC_NU: "",
+                                LOC_NU: '',
                                 LOC_CEP_INI: parts[3],
                                 LOC_CEP_FIM: parts[3]
 
@@ -156,7 +156,7 @@ exports.parse = function (opts) {
                         if (jsonZipCode.length == 0) {
 
                             let obJson = {
-                                LOC_NU: "",
+                                LOC_NU: '',
                                 LOC_CEP_INI: uniqueZipcode,
                                 LOC_CEP_FIM: uniqueZipcode
 
